@@ -1,5 +1,4 @@
 #!/bin/bash
-#mostrar los comandos que se van ejecutando
 
 #Iniciar la variable
 source .env
