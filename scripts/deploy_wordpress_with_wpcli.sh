@@ -43,12 +43,35 @@ wp config create \
 # Creamos el sitio de wordpress
 wp core install \
   --url=$URL \
-  --title=$WP_TITLE \
+  --title="$WP_TITLE" \
   --admin_user=$WP_USER \
   --admin_password=$WP_PASS \
   --admin_email=$WP_EMAIL \
   --path=$WP_PATH \
   --allow-root
+
+# Cambiamos a todo los permisos de www-data
+chown -R www-data:www-data /var/www/html
+
+# Activamos la rescritura de los permalinks o enlaces permanentes 
+wp rewrite structure '/%postname%/' \
+  --path=$WP_PATH \
+  --allow-root
+
+# Copiamos nuestro archivo .htaccess para activar los permalinks
+cp ../htaccess/.htaccess $WP_PATH
+
+# Instalamos y activamos el theme elegido
+wp theme install mindscape --activate --path=$WP_PATH --allow-root
+
+# Instalamos el plugin para ocultar nuestro archivo wp-admin
+wp plugin install wps-hide-login --activate --path=$WP_PATH --allow-root
+
+# Configuramos el plugin ocultador de wp-login!
+wp option update whl_page $nombre_secreto --path=$WP_PATH --allow-root
+
+# Desactivamos un plugin
+# wp plugin deactivate wps-hide-login
 
 # Cambiamos a todo los permisos de www-data
 chown -R www-data:www-data /var/www/html
