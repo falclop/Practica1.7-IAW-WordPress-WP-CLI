@@ -105,4 +105,20 @@ chown -R www-data:www-data /var/www/html
 ```
 
 ### Comprobaciones
-Una vez lanzado nuestro script, instalado nuestro archivo 
+Una vez lanzado nuestro script, instalado nuestro archivo fuente de wordpress y lanzadas las opciones del cli, solo tendremos que entrar en nuestro dominio para ver las siguientes opciones:  
+
+Al entrar la primera vez, vemos que ya está todo configurado  
+![](/images/1.png)  
+
+Comprobamos que el ocultamiento de wp-login funciona  
+![](/images/2.png)  
+  
+![](/images/3.png)  
+
+Comprobamos los permalinks  
+![](/images/4.png)  
+
+![](/images/5.png)  
+
+Entrada hola mundo!
+![](/images/6.png)  
